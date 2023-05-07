@@ -16,8 +16,6 @@ export const useInsertUser = (docCollection) => {
                 newUser
              )
 
-             console.log('funfou')
-
         } catch (error) {
             console.log(error)
         }

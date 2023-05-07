@@ -7,11 +7,14 @@ import {
     signOut
 } from 'firebase/auth'
 
+
 import { useState } from 'react'
 
 import { useInsertUser } from './useInsertUser'
 
 import { useProvider } from '../context/UserContext'
+
+
 
 export const useRegisterAuth = () => {
     const [error, setError] = useState(null)
@@ -49,7 +52,10 @@ export const useRegisterAuth = () => {
 
             return user
 
+
         } catch (error) {
+
+
             let messageError
             console.log(error.message)
             

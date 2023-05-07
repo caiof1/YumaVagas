@@ -26,11 +26,11 @@ const Header = ({user}) => {
             setUID('')
         }
     }, [user])
+
+    console.log('uid' + uid)
  
     
     const {userDoc} = useFetchUser('users', uid)
-
-    console.log(userDoc)
 
     const handleBarMove = () => {
         if(moveBar === 'active') {
@@ -65,7 +65,7 @@ const Header = ({user}) => {
                     <li>
                         <NavLink onClick={handleBarMove} to="/">Home</NavLink>
                     </li>
-                    {user && userDoc.idA === 1 && (
+                    {user && uid === userDoc.uid && userDoc.idA === 1 && (
                         <li>
                             <NavLink onClick={handleBarMove} to="/create/posts">Criar vaga</NavLink>
                         </li>

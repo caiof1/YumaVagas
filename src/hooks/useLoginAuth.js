@@ -3,11 +3,15 @@ import { useState } from "react";
 
 import { useRegisterAuth } from "./useRegisterAuth";
 
+import { useNavigate } from "react-router-dom";
+
 export const useLoginAuth = () => {
 
     const [error, setError] = useState(null)
 
     const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate()
 
     const {auth} = useRegisterAuth()
     
@@ -17,6 +21,7 @@ export const useLoginAuth = () => {
 
         try {
             await signInWithEmailAndPassword(auth, user.email, user.password)
+            navigate('/')
         } catch (error) {
             let systemErrorMessage
 

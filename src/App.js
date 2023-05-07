@@ -58,8 +58,6 @@ function App() {
 
   const {userDoc} = useFetchUser('users', uid)
 
-  console.log(userDoc)
-
   return (
     <div className="App"> 
       <UserContextProvider value={{user}}>
@@ -71,7 +69,7 @@ function App() {
               <Route path="/register/company" element={<CompanyRegister />} />
               <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
               <Route path="/profile" element={<Profile user={user} />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home userDoc={userDoc} user={user} />} />
               <Route path="/create/posts" element={user && userDoc.idA === 1 ?  <Posts /> : <Navigate to="/login" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

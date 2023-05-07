@@ -4,11 +4,16 @@ import styles from './Home.module.css'
 
 import {Link} from 'react-router-dom'
 
-const Home = () => {
+
+const Home = ({userDoc, user}) => {
 
     const [error, setError] = useState(null)
 
     const {documents, error: fetchError, loading} = useFetchDocuments('posts')
+
+    
+
+    console.log(userDoc)
 
     useEffect(() => {
         if(fetchError) {
@@ -19,7 +24,16 @@ const Home = () => {
     return (
         <div className={styles.container}>
             {error && <span>{error}</span>}
-            {loading && <span className='loading'></span>}
+            {documents && documents == 0 && (
+                <section className={styles.vaga_create}>
+                    <p>Nenhuma vaga foi criada...</p>
+                    {user && userDoc.idA === 1 && (
+                        <Link to="/create/posts">
+                            <button className='btn'>Criar vaga</button>
+                        </Link>
+                    )}
+                </section>
+            )}
             {documents && documents.map((doc) => (
                 <div key={doc.id}>
                     <h2>{doc.name}</h2>

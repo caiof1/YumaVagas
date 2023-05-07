@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 import styles from './Login.module.css'
 import { useLoginAuth } from '../../hooks/useLoginAuth'
@@ -13,8 +13,6 @@ const Login = () => {
   const [error, setError] = useState(null)
 
   const {login, error: authError, loading} = useLoginAuth()
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     if(authError) {
@@ -34,8 +32,6 @@ const Login = () => {
     }
 
     await login(user)
-
-    navigate('/')
   }
 
 

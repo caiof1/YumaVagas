@@ -16,9 +16,11 @@ const Register = () => {
 
     const [error, setError] = useState(null)
 
-    const {createUser, error: authError, loading} = useRegisterAuth();
-
     const navigate = useNavigate()
+
+
+    const {createUser, error: authError, loading} = useRegisterAuth();
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,9 +39,12 @@ const Register = () => {
             idA: 0
         }
 
-        await createUser(user)
+        const resUser = await createUser(user)
 
-        navigate('/')
+        if(resUser) {
+            navigate('/')
+        }
+
     }
 
     useEffect(() => {
