@@ -10,7 +10,7 @@
 
 .login_container {
     width: inherit;
-    padding: 0 5px;
+    padding: 10px 5px;
     background: white;
     display: flex;
     flex-direction: column;

@@ -13,6 +13,7 @@ import {
 export const useFetchUser = (docCollection, uid) => {
 
     const [userDoc, setUserDoc] = useState('')
+    const [id, setID] = useState('')
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -27,6 +28,8 @@ export const useFetchUser = (docCollection, uid) => {
                 const q = query(collection(db, docCollection), where('uid', '==', uid));
 
                 const querySnapshot = await getDocs(q)
+
+                setID(querySnapshot.docs[0].id)
 
                 const docRef = await doc(db, docCollection, querySnapshot.docs[0].id)
 
@@ -43,6 +46,6 @@ export const useFetchUser = (docCollection, uid) => {
         fetchUser()
     }, [docCollection, uid])
 
-    return {userDoc, loading, error}
+    return {userDoc, id, loading, error}
 
 }

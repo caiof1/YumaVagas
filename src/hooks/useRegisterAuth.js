@@ -45,7 +45,18 @@ export const useRegisterAuth = () => {
 
             createInfoUser({
                 uid: auth.currentUser.proactiveRefresh.user.uid,
-                idA: data.idA
+                idA: data.idA,
+                number: '',
+                gen: '0',
+                state: '0',
+                portfolio: '',
+                linkedin: '',
+                cep: '',
+                stateCEP: '',
+                city: '',
+                neighborhood: '',
+                road: '',
+                numberCEP: ''
             })
 
             setLoading(false);

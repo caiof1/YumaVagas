@@ -55,7 +55,7 @@ const Header = ({user}) => {
                 </div>
                 {user && (
                     <NavLink to="/profile" className={styles.profile}>
-                        <i class="fa-regular fa-user"></i>
+                        <i className="fa-regular fa-user"></i>
                     </NavLink> 
                 )}
                 <div className={styles.bar}>

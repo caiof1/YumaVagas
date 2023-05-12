@@ -6,6 +6,25 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes messageMove{
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes messageMoveScreen {
+    from {
+        transform: translateX(110%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -75,4 +94,31 @@ a {
     border-radius: 50px;
     border-right: 3px solid #b532fa;
     animation: rotateLoading 400ms infinite linear;
+}
+
+.message {
+    width: 100%;
+    max-width: 300px;
+    background: #3181a6;
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.4s linear;
+    transform: translateX(110%);
+    animation: messageMoveScreen 400ms linear forwards;
+}
+
+.message::before {
+    content: '';
+    display: block;
+    width: 0;
+    padding: 40px 0;
+    background: #0a5e8568;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    animation: messageMove 1.5s linear forwards 400ms;
 }
