@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_academic {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid black;
+    margin: 20px 0;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.container_academic span {
+    margin: 10px 0;
+    word-wrap: break-word;
+    color: white;
+}
+
+.container_academic .icons {
+    position: absolute;
+    right: 20px;
+}
+
+.container_academic i {   
+    font-size: 18px;
+    color: white;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.container_academic i:first-child:hover {
+    color: #2dabe6;
+}
+
+.container_academic i:last-child:hover {
+    color: red;
+}
+
+.noexperience {
+    color: white;
+    margin: 1.5em 0;
+}

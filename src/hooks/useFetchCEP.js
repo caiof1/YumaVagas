@@ -5,6 +5,7 @@ export const useFetchCEP = () => {
     const url = 'https://cdn.apicep.com/file/apicep/'
 
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     const searchCEP = async (cepAdjusting) => {
 
@@ -16,13 +17,13 @@ export const useFetchCEP = () => {
             setLoading(false)
             return res
         } catch (error) {
-            console.log(error)    
+            setError(error)
         }
 
         setLoading(false)
         
     }
 
-    return {searchCEP, loading}
+    return {searchCEP, loading, error}
 
 }

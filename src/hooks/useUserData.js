@@ -1,7 +1,5 @@
 import {useState, useEffect} from 'react'
 
-import {useProvider} from '../context/UserContext'
-
 import { useFetchUser } from './useFetchUser'
 
 export const useUserData = (user) => {

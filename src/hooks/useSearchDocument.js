@@ -7,7 +7,7 @@ import {
     onSnapshot
 } from 'firebase/firestore';
 
-export const useFetchDocuments = (docCollection) => {
+export const useSearchDocument = (docCollection, search) => {
 
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
@@ -43,7 +43,7 @@ export const useFetchDocuments = (docCollection) => {
         }
 
         loadData()
-    }, [docCollection, documents])
+    }, [search, docCollection, documents])
 
     useEffect(() => {
         return () => setCancelled(true)

@@ -67,6 +67,7 @@ const Posts = () => {
             description,
             type,
             model,
+            apply: [],
             uid: user.uid,
             createBy: user.displayName
         })
@@ -83,7 +84,7 @@ const Posts = () => {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form autoComplete='off' onSubmit={handleSubmit} className={styles.form}>
                 <h2>Preencha tudo para postar a sua vaga!</h2>
                 <label>
                     <span>Nome da vaga:</span>

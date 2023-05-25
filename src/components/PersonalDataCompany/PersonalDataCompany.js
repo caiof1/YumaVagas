@@ -1,12 +1,12 @@
 import { useUserData } from '../../hooks/useUserData'
-import styles from './PersonalData.module.css'
+import styles from './PersonalDataCompany.module.css'
 
 import { useState, useEffect } from 'react'
 
 import { useUpdateUser } from '../../hooks/useUpdateUser'
 import { useMessage } from '../../hooks/useMessage'
 
-const PersonalData = ({user}) => {
+const PersonalDataCompany = ({user}) => {
 
     const {userDoc, id} = useUserData(user)
 
@@ -15,9 +15,9 @@ const PersonalData = ({user}) => {
     const {messageExist, message, messageAtt} = useMessage()
 
     const [number, setNumber] = useState('')
-    const [gen, setGen] = useState('')
-    const [state, setState] = useState('')
-    const [portfolio, setPortfolio] = useState('')
+    const [qtdStaff, setQtdStaff] = useState('')
+    const [carry, setCarry] = useState('')
+    const [emailContact, setEmailContact] = useState('')
     const [linkedin, setLinkedin] = useState('')
 
     const {updateUser, loading, error: updateError} = useUpdateUser('users')
@@ -30,20 +30,20 @@ const PersonalData = ({user}) => {
 
     useEffect(() => {
         setNumber(userDoc.number)
-        setGen(userDoc.gen)
-        setState(userDoc.state)
-        setPortfolio(userDoc.portfolio)
+        setQtdStaff(userDoc.qtdStaff)
+        setCarry(userDoc.carry)
+        setEmailContact(userDoc.emailContact)
         setLinkedin(userDoc.linkedin)
     }, [userDoc])
     
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if(userDoc.number !== number || userDoc.gen !== gen || userDoc.state !== state || userDoc.portfolio !== portfolio || userDoc.linkedin !== linkedin) {
+        if(userDoc.number !== number || userDoc.qtdStaff !== qtdStaff || userDoc.carry !== carry || userDoc.emailContact !== emailContact || userDoc.linkedin !== linkedin) {
             userDoc.number = number
-            userDoc.gen = gen
-            userDoc.state = state
-            userDoc.portfolio = portfolio
+            userDoc.qtdStaff = qtdStaff
+            userDoc.carry = carry
+            userDoc.emailContact = emailContact
             userDoc.linkedin = linkedin
 
             updateUser(id, userDoc)
@@ -63,33 +63,27 @@ const PersonalData = ({user}) => {
                 </div>
             )}
             <form autoComplete='off' onSubmit={handleSubmit} className={styles.form}>
-                <h2>Dados pessoais</h2>
+                <h2>Dados empresa</h2>
                 <label>
                     <span>Número:</span>
-                    <input type="number" name="telphone" placeholder='Digite seu número de telefone' value={number} onChange={(e) => setNumber(e.target.value)} />
+                    <input type="number" name="telphone" placeholder='Digite o número da empresa' value={number} onChange={(e) => setNumber(e.target.value)} />
                 </label>
                 <label>
-                    <span>Gênero:</span>
-                    <select name="gen" className='select' value={gen} onChange={(e) => setGen(e.target.value)}>
-                        <option value="" disabled>- - - Selecione Gênero - - -</option>
-                        <option value="1">Feminino</option>
-                        <option value="2">Masculino</option>
+                    <span>Qtd funcionários:</span>
+                    <input type="number" name="qtdStaff" placeholder='Digite a quantidade de funcionários' value={qtdStaff} onChange={(e) => setQtdStaff(e.target.value)} />
+                </label>
+                <label>
+                    <span>Porte da empresa:</span>
+                    <select name="carry" className='select' value={carry} onChange={(e) => setCarry(e.target.value)}>
+                        <option value="" disabled>- - - Selecione Porte da empresa - - -</option>
+                        <option value="1">Pequeno porte</option>
+                        <option value="2">Médio porte</option>
+                        <option value="3">Grande porte</option>
                     </select>
                 </label>
                 <label>
-                    <span>Estado civil:</span>
-                    <select name="state" className='select' value={state} onChange={(e) => setState(e.target.value)}>
-                        <option value="" disabled>- - - Selecione Estado Civil - - -</option>
-                        <option value="1">Solteiro</option>
-                        <option value="2">Casado</option>
-                        <option value="3">Viúvo</option>
-                        <option value="4">Separado</option>
-                        <option value="5">Divorciado</option>
-                    </select>
-                </label>
-                <label>
-                    <span>Portfolio:</span>
-                    <input type="text" name="portfolio" placeholder='Coloque aqui o link do seu portfolio' value={portfolio} onChange={(e) => setPortfolio(e.target.value)} />
+                    <span>Email de contato:</span>
+                    <input type="email" name="emailContact" placeholder='E-mail de contato da empresa' value={emailContact} onChange={(e) => setEmailContact(e.target.value)} />
                 </label>
                 <label>
                     <span>Linkedin:</span>
@@ -103,4 +97,4 @@ const PersonalData = ({user}) => {
     )
 }
 
-export default PersonalData
+export default PersonalDataCompany

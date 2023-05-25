@@ -26,8 +26,6 @@ const Header = ({user}) => {
             setUID('')
         }
     }, [user])
-
-    console.log('uid' + uid)
  
     
     const {userDoc} = useFetchUser('users', uid)
@@ -68,6 +66,11 @@ const Header = ({user}) => {
                     {user && uid === userDoc.uid && userDoc.idA === 1 && (
                         <li>
                             <NavLink onClick={handleBarMove} to="/create/posts">Criar vaga</NavLink>
+                        </li>
+                    )}
+                    {user && (
+                        <li>
+                            <NavLink onClick={handleBarMove} to={user && userDoc.idA === 0 ? '/dashboard/user' : '/dashboard/company'}>Dashboard</NavLink>
                         </li>
                     )}
                     {user && (

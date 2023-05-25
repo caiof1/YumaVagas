@@ -2,18 +2,16 @@ import { useEffect, useState } from 'react'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import styles from './Home.module.css'
 
-import {Link} from 'react-router-dom'
+import VacancyScreen from '../../components/VacancyScreen/VacancyScreen'
+import SearchFunctionality from '../../components/SearchFunctionality/SearchFunctionality'
 
 
-const Home = ({userDoc, user}) => {
+
+const Home = ({user}) => {
 
     const [error, setError] = useState(null)
 
-    const {documents, error: fetchError, loading} = useFetchDocuments('posts')
-
-    
-
-    console.log(userDoc)
+    const {documents, error: fetchError} = useFetchDocuments('posts')
 
     useEffect(() => {
         if(fetchError) {
@@ -23,38 +21,8 @@ const Home = ({userDoc, user}) => {
 
     return (
         <div className={styles.container}>
-            {error && <span>{error}</span>}
-            {documents && documents == 0 && (
-                <section className={styles.vaga_create}>
-                    <p>Nenhuma vaga foi criada...</p>
-                    {user && userDoc.idA === 1 && (
-                        <Link to="/create/posts">
-                            <button className='btn'>Criar vaga</button>
-                        </Link>
-                    )}
-                </section>
-            )}
-            {documents && documents.map((doc) => (
-                <div key={doc.id}>
-                    <h2>{doc.name}</h2>
-                    <p>{doc.createBy}</p>
-                    <div className={styles.info}>
-                        <span>
-                            {doc.model} / {doc.type}
-                        </span>
-                        <span>Salário: {doc.wage === '' ? 'A combinar' : doc.wage}</span>
-                        <span>
-                            <strong>{doc.qtd} Vaga: </strong>
-                            {doc.city} - {doc.state}
-                        </span>
-                    </div>
-                    <p className={styles.description}>{doc.description.substr(0, 330)}...</p>
-                    <Link>
-                        <button className='btn'>Quero me candidatar</button>
-                    </Link>
-                </div>
-            ))}
-            
+            <SearchFunctionality />
+            <VacancyScreen error={error} documents={documents} user={user} message='Nenhuma vaga criada...' /> 
         </div>
     )
 }

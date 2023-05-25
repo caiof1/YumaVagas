@@ -49,8 +49,6 @@ const PersonalData = ({user}) => {
 
         const cepAdjusting = e.target.value
 
-        console.log(e.target.value)
-
         if(cep && cepAdjusting.length === 8) {
             cepInitial = cepAdjusting.substring('0', '5')
             cepEnd = cepAdjusting.substring('5', '8')    
@@ -78,7 +76,9 @@ const PersonalData = ({user}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if(userDoc.cep != cep || userDoc.stateCEP != state || userDoc.city != city || userDoc.neighborhood != neighborhood || userDoc.road != road || userDoc.numberCEP != number) {
+        setError(null)
+
+        if(userDoc.cep !== cep || userDoc.stateCEP !== state || userDoc.city !== city || userDoc.neighborhood !== neighborhood || userDoc.road !== road || userDoc.numberCEP !== number) {
             userDoc.cep = cep
             userDoc.stateCEP = state
             userDoc.city = city
@@ -89,7 +89,7 @@ const PersonalData = ({user}) => {
 
             updateUser(id, userDoc)
 
-            if(!error) {
+            if(!error && !updateError) {
                 messageAtt('Dados atualizados')
             }
             
@@ -103,7 +103,7 @@ const PersonalData = ({user}) => {
                     <span>{message}</span>
                 </div>
             )}
-            <form onSubmit={handleSubmit} className={styles.form}>
+            <form autoComplete='off' onSubmit={handleSubmit} className={styles.form}>
                 <h2>Endereço</h2>
                 <label>
                     <span>CEP:</span>

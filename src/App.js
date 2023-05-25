@@ -27,6 +27,8 @@ import Posts from './pages/posts/Posts';
 import NotFound from './pages/NotFound/NotFound';
 import CompanyRegister from './pages/CompanyRegister/CompanyRegister';
 import Profile from './pages/Profile/Profile';
+import Search from './pages/Search/Search';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 
 function App() {
@@ -68,9 +70,11 @@ function App() {
               <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
               <Route path="/register/company" element={<CompanyRegister />} />
               <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-              <Route path="/profile" element={<Profile user={user} />} />
+              <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" />} />
+              <Route path="/dashboard/user" element={user && userDoc.idA === 0 ? <Dashboard user={user} /> : <Navigate to="/login" />} />
               <Route path="/" element={<Home userDoc={userDoc} user={user} />} />
               <Route path="/create/posts" element={user && userDoc.idA === 1 ?  <Posts /> : <Navigate to="/login" />} />
+              <Route path="/search" element={<Search user={user} userDoc={userDoc} />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

@@ -1,12 +1,14 @@
 import {db} from '../firebase/config'
 import {updateDoc, doc} from 'firebase/firestore'
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 export const useUpdateUser = (docCollection) => {
 
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+
+
 
     const updateUser = async (id, data) => {
         setLoading(true)

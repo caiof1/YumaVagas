@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.container > div {
+    width: 100%;
+    max-width: 600px;
+    background: #2dabe6;
+    border-radius: 15px;
+    margin: 30px 0;
+    padding: 20px;
+}
+
+.vaga_create {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 15px;
+    color: #b532fa;
+}
+
+.container form {
+    width: 100%;
+    text-align: center;
+}
+
+.container p {
+    color: black;
+}
+
+.info {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.info strong {
+    color: #b532fa;
+}
+
+.container > span {
+    margin-top: 20px;
+}
+
+.more {
+    color: blue;
+    text-decoration: underline;
+    margin-left: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

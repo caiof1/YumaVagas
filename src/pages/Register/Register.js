@@ -56,27 +56,27 @@ const Register = () => {
 
     return (
         <div className={styles.register}>
-            <form onSubmit={handleSubmit} className={styles.register_container}>
+            <form autoComplete='off' onSubmit={handleSubmit} className={styles.register_container}>
             <h2>Registro</h2>
                 <label>
                     <span>Nome</span>
                     <input type="text" name="name" required placeholder='Digite seu nome' value={name} onChange={(e) => setName(e.target.value)} />
-                    <i class="fa-regular fa-user"></i>
+                    <i className="fa-regular fa-user"></i>
                 </label>
                 <label>
                     <span>E-mail</span>
                     <input type="email" name="email" required placeholder='Digite seu e-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <i class="fa-regular fa-envelope"></i>
+                    <i className="fa-regular fa-envelope"></i>
                 </label>
                 <label>
                     <span>Senha</span>
                     <input type="password" name="password" required placeholder='Digite sua senha' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <i class="fa-solid fa-lock"></i>
+                    <i className="fa-solid fa-lock"></i>
                 </label>
                 <label>
                     <span>Confirme a senha</span>
                     <input type="password" name="confirmPassword" required placeholder='Confirme a sua senha' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                    <i class="fa-solid fa-lock"></i>
+                    <i className="fa-solid fa-lock"></i>
                 </label>
                 {error && <p>{error}</p>}
                 {loading && <span className='loading'></span>}

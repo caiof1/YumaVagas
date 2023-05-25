@@ -12,10 +12,6 @@ import { useState } from 'react'
 
 import { useInsertUser } from './useInsertUser'
 
-import { useProvider } from '../context/UserContext'
-
-
-
 export const useRegisterAuth = () => {
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false);
@@ -23,8 +19,6 @@ export const useRegisterAuth = () => {
     const auth = getAuth();
 
     const {createInfoUser} = useInsertUser('users')
-
-    const infoAuth = useProvider();
 
     const createUser = async (data) => {
         setError(null);
@@ -46,9 +40,10 @@ export const useRegisterAuth = () => {
             createInfoUser({
                 uid: auth.currentUser.proactiveRefresh.user.uid,
                 idA: data.idA,
+                apply: [],
                 number: '',
-                gen: '0',
-                state: '0',
+                gen: '',
+                state: '',
                 portfolio: '',
                 linkedin: '',
                 cep: '',
@@ -56,7 +51,12 @@ export const useRegisterAuth = () => {
                 city: '',
                 neighborhood: '',
                 road: '',
-                numberCEP: ''
+                numberCEP: '',
+                profissional: [],
+                academic: [],
+                qtdStaff: '',
+                carry: '',
+                emailContact: ''
             })
 
             setLoading(false);
@@ -89,6 +89,6 @@ export const useRegisterAuth = () => {
         signOut(auth)
     }
  
-    return {auth, createUser, error, loading, logout}
+    return {auth, createUser, error, loading, logout, db}
     
 }

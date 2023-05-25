@@ -1,6 +1,5 @@
 import { db } from "../firebase/config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { useState } from "react";
 
 export const useInsertUser = (docCollection) => {
 

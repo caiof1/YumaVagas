@@ -90,3 +90,7 @@
 .form input::placeholder {
     color: white;
 }
+
+.container p {
+    margin-top: 20px !important;
+}

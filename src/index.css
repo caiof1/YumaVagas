@@ -92,7 +92,7 @@ a {
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    border-right: 3px solid #b532fa;
+    border-right: 10px solid #b532fa;
     animation: rotateLoading 400ms infinite linear;
 }
 
@@ -121,4 +121,18 @@ a {
     left: 0;
     border-radius: 20px;
     animation: messageMove 1.5s linear forwards 400ms;
+}
+
+.btn-disabled {
+    background: green;
+    color: white;
+    cursor: initial;
+}
+
+.btn-disabled:hover {
+    color: white;
+}
+
+.noposts {
+    margin-top: 10px;
 }

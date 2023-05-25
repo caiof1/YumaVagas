@@ -1,0 +1,9 @@
+.search_container .result {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.result span {
+    color: white;
+}
