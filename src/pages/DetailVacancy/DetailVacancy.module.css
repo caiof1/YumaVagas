@@ -1,0 +1,114 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.container_vacancy {
+    background: #2dabe6;
+    width: 100%;
+    margin-top: 20px;
+    max-width: 800px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.container_vacancy h2,
+.container_vacancy h3,
+.container_vacancy h4 {
+    color: #b532fa;
+}
+
+.container_vacancy .info_vacancy div {
+    margin: 10px 0;
+}
+
+.container_vacancy p {
+    margin: 10px 0;
+}
+
+.container_vacancy .qtd_vacancy {
+    color: #b532fa;
+    font-weight: bold;
+}
+
+.container_vacancy hr {
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    margin: 25px 0;
+}
+
+.container_vacancy .benefits ul {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.container_vacancy .benefits ul li {
+    margin: 5px 0;
+}
+
+.container_vacancy .info_company .img_info {
+    padding: 10px;
+    display: flex;
+}
+
+.container_vacancy .info_company i {
+    font-size: 75px;
+    color: black;
+}
+
+.container_vacancy .info_company .img_info div {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.apply_container {
+    margin-top: 20px;
+    margin-left: 20px;
+    background: #2dabe6;
+    width: 100%;
+    max-width: 200px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.apply_container .btn {
+    width: 100%;
+    max-width: 150px;
+    height: 40px;
+    background: linear-gradient(to right, #2dabe6,#b532fa 70%) no-repeat fixed;
+    border-radius: 20px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .apply_container {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: transparent;
+        height: auto;
+        padding-top: 10px;
+        border-radius: 0;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    
+    .apply_container .btn {
+        background: #b532fa;
+    }
+
+    .apply_container p {
+        display: none;
+    }
+}

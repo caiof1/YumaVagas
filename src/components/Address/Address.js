@@ -15,7 +15,7 @@ const PersonalData = ({user}) => {
 
     const {messageExist, message, messageAtt} = useMessage()
 
-    const {searchCEP, loading: loadingCEP} = useFetchCEP()
+    const {searchCEP} = useFetchCEP()
 
     let cepInitial
     let cepEnd
@@ -98,11 +98,7 @@ const PersonalData = ({user}) => {
 
     return (
         <div className={styles.container}>
-            {messageExist && (
-                <div className='message'>
-                    <span>{message}</span>
-                </div>
-            )}
+            {messageExist && <span className='message'>{message}</span>}
             <form autoComplete='off' onSubmit={handleSubmit} className={styles.form}>
                 <h2>Endereço</h2>
                 <label>
@@ -129,10 +125,10 @@ const PersonalData = ({user}) => {
                     <span>Número:</span>
                     <input type="text" name="number" placeholder='Digite o número da sua casa' value={number} onChange={(e) => setNumber(e.target.value)} />
                 </label>
-                <input type="submit" value="Salvar" className='btn' />
+                <button type="submit" className='btn'>
+                    {loading ? <span className='loading'></span> : 'Salvar'}
+                </button>
                 {error && <p>{error}</p>}
-                {loading && <span className='loading'></span>}
-                {loadingCEP && <span className='loading'></span>}
             </form>
         </div>
     )

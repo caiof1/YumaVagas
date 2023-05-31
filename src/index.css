@@ -67,6 +67,8 @@ a {
     color: white;
     border: 0;
     cursor: pointer;
+    position: relative;
+    margin-bottom: 10px;
 }
 
 .btn:hover {
@@ -85,36 +87,39 @@ a {
 }
 
 .loading {
-    position: fixed;
+    position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    border-right: 10px solid #b532fa;
-    animation: rotateLoading 400ms infinite linear;
+    left: 45%;
+    width: 20px;
+    height: 20px;
+    border-radius: 25px;
+    border-right: 2px solid white;
+    animation: rotateLoading 590ms infinite linear;
 }
 
 .message {
     width: 100%;
     max-width: 300px;
-    background: #3181a6;
+    background: black;
     position: fixed;
     right: 20px;
+    color: white;
+    height: 30px;
     bottom: 10px;
     border-radius: 20px;
-    padding: 30px;
     transition: 0.4s linear;
     transform: translateX(110%);
     animation: messageMoveScreen 400ms linear forwards;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
 }
 
 .message::before {
     content: '';
     display: block;
     width: 0;
-    padding: 40px 0;
+    height: 30px;
     background: #0a5e8568;
     position: absolute;
     top: 0;
@@ -135,4 +140,8 @@ a {
 
 .noposts {
     margin-top: 10px;
+}
+
+textarea {
+    resize: none;
 }

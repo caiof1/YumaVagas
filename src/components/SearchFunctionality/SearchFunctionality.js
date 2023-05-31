@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './SearchFunctionality.module.css'
 import { useNavigate } from 'react-router-dom'
 
-const SearchFunctionality = () => {
+const SearchFunctionality = ({documents}) => {
 
     const [query, setQuery] = useState('')
 

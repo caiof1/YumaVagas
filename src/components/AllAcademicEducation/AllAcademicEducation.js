@@ -2,6 +2,7 @@ import styles from './AllAcademicEducation.module.css'
 
 import { useFetchUser } from '../../hooks/useFetchUser'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
+import { useMessage } from '../../hooks/useMessage'
 
 const AllAcademicEducation = ({user, changeStateMenu}) => {
 
@@ -9,11 +10,14 @@ const AllAcademicEducation = ({user, changeStateMenu}) => {
 
   const {updateUser} = useUpdateUser('users')
 
+  const {messageExist, message, messageAtt} = useMessage()
+
   let contador = -1
 
   const handleDeleteField = (e) => {
     userDoc.academic.splice(e.target.id, 1)
     updateUser(id, userDoc)
+    messageAtt('Formação excluída')
   }
 
   return (
@@ -39,6 +43,7 @@ const AllAcademicEducation = ({user, changeStateMenu}) => {
         <span className={styles.noexperience}>Nenhuma formação declarada...</span>
       )}
       <button className='btn' id='7' onClick={changeStateMenu}>Adicionar formação</button>
+      {messageExist && <span className='message'>{message}</span>}
     </div>
   )
 }

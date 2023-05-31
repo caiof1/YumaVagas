@@ -53,8 +53,9 @@ const Login = () => {
               <i className="fa-solid fa-lock"></i>
           </label>
           {error && <p>{error}</p>}
-          {loading && <span className='loading'></span>}
-          <input type="submit" value="Entrar" className='btn' />
+          <button type="submit" className='btn'>
+            {loading ? <span className='loading'></span> : 'Entrar'}
+          </button>
           <Link to="/register">Não possui cadastro? Cadastre-se aqui!</Link>
       </form>
   </div>

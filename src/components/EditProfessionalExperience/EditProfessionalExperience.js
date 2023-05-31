@@ -124,9 +124,10 @@ const EditProfessionalExperience = ({user, changeStateMenu, eID}) => {
                         <span>*Deixe em branco caso ainda esteja na empresa*</span>
                     </label>
                 </div>
-                <input type="submit" value="Salvar" className='btn' />
+                <button type="submit" className='btn'>
+                    {loading ? <span className='loading'></span> : 'Salvar'}
+                </button>
                 {error && <p>{error}</p>}
-                {loading && <span className='loading'></span>}
             </form>
         </div>
     )

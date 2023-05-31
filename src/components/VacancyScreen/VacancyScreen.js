@@ -24,7 +24,7 @@ const VacancyScreen = ({error, documents, user, message}) => {
     return (
         <div className={styles.container}>
             {error && <span>{error}</span>}
-                {documents && documents === 0 && (
+                {documents && documents.length === 0 && (
                     <section className={styles.vaga_create}>
                         <p>{message}</p>
                         {user && userDoc.idA === 1 && (
@@ -51,7 +51,7 @@ const VacancyScreen = ({error, documents, user, message}) => {
                         <p className={styles.description}>{doc.description.substr(0, 330)}{doc.description.length > 329 ? '...' : ''}</p>
                         <Link to={!user && '/login'}>
                             {user && userDoc && userDoc.apply.find(element => element === doc.id) !== undefined ? (
-                                <button className='btn btn-disabled' disabled>Quero me candidatar</button>
+                                <button className='btn btn-disabled' disabled>Candidatura enviada</button>
                             ) : (
                                 <button className='btn' onClick={() => sendApply(doc)}>Quero me candidatar</button>
                             )}

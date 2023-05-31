@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useRegisterAuth } from '../hooks/useRegisterAuth'
 import { useFetchUser } from '../hooks/useFetchUser'
+import { useMessage } from '../hooks/useMessage'
 
 
 
@@ -18,6 +19,8 @@ const Header = ({user}) => {
     const {logout} = useRegisterAuth()
 
     const [uid, setUID] = useState('')
+
+    const {messageExist, message, messageAtt} = useMessage()
 
     useEffect(() =>{
         if(user) {
@@ -41,6 +44,7 @@ const Header = ({user}) => {
     const logoutAndMoveBar = () => {
         logout()
         handleBarMove()
+        messageAtt('Saiu com sucesso')
     }
 
     return (
@@ -89,6 +93,7 @@ const Header = ({user}) => {
                         </li>
                     )}
                 </ul>
+                {messageExist && <span className='message'>{message}</span>}
             </nav>
         </header>
     )

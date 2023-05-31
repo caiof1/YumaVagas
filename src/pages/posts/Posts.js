@@ -29,6 +29,10 @@ const Posts = () => {
     const [description, setdescription] = useState('')
     const [type, setType] = useState('')
     const [model, setModel] = useState('')
+    const [nameBenefits, setNameBenefits] = useState('')
+    const [valueBenefits, setValueBenefits] = useState('')
+    const [allBenefits, setAllBenefits] = useState([])
+    const [idBenefit, setIdBenefit] = useState(0)
 
     const handleIconRotate = () => {
         if(active === false) {
@@ -46,6 +50,27 @@ const Posts = () => {
         }
     }
 
+
+    const handleAddBenefit = () => {
+        if(!nameBenefits) return
+
+        setIdBenefit((actualIdBenefit) => actualIdBenefit + 1)
+
+        const arrayBenefit = {nameBenefits, valueBenefits, idBenefit}
+    
+        setAllBenefits((actualAllBenefits) => [
+            ...actualAllBenefits,
+            arrayBenefit
+        ])
+        
+    }
+
+    console.log(allBenefits)
+
+    const handleRemoveBenefit = (e) => {
+        setAllBenefits((actualAllBenefits) => actualAllBenefits.splice(e.target.value, 1))
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -56,7 +81,6 @@ const Posts = () => {
             return;
         }
 
-        console.log(user.uid)
 
         insertPost({
             name,
@@ -67,6 +91,8 @@ const Posts = () => {
             description,
             type,
             model,
+            benefits: allBenefits,
+            statePost: 'Candidaturas',
             apply: [],
             uid: user.uid,
             createBy: user.displayName
@@ -134,9 +160,28 @@ const Posts = () => {
                     </select>
                     <i className="fa-solid fa-sort-down"></i>
                 </label>
-                {loading && <span className='loading'></span>}
+                <label className={styles.benefits}>
+                    <span>Benefícios</span>
+                    <div>
+                        <input type="text" name='nameBenefits' placeholder='Qual é o benefício?' value={nameBenefits} onChange={(e) => setNameBenefits(e.target.value)} />
+                        <input type="number" name="valueBenefits" placeholder='Digite o valor do benefício' value={valueBenefits} onChange={(e) => setValueBenefits(e.target.value)} />
+                    </div>
+                    <input type="button" onClick={handleAddBenefit} className={styles.btn} value="Adicionar benefício" />
+                    <section className={styles.container_benefits}>
+                        <ul className={styles.benefit}>
+                            {allBenefits && allBenefits.map((ben) => (
+                                <li key={ben.idBenefit}>
+                                    <span>{ben.nameBenefits}{ben.valueBenefits !== '' ? ' - ' + ben.valueBenefits : ''}</span>
+                                    <span id={ben[2]} onClick={handleRemoveBenefit}>x</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                </label>
                 {error && <p>{error}</p>}
-                <button type='submit' className='btn'>Cadastrar Vaga</button>
+                <button type="submit" className='btn'>
+                    {loading ? <span className='loading'></span> : 'Cadastrar vaga'}
+                </button>
             </form>
         </div>
     )

@@ -4,7 +4,8 @@ import { useFetchUser } from '../../hooks/useFetchUser'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useEffect, useState } from 'react'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useMessage } from '../../hooks/useMessage'
 
 const Dashboard = ({user}) => {
 
@@ -20,13 +21,16 @@ const Dashboard = ({user}) => {
 
     const [update, setUpdate] = useState(false)
 
+    const {messageExist, message, messageAtt} = useMessage()
+    const navigate = useNavigate()
+
     useEffect(() => {
         setUpdate(false)
         setDocument([])
         if(userDoc.apply) {
             userDoc.apply.map((doc) => {
-                setDocument((actualDocuments) => [
-                    ...actualDocuments,
+                setDocument((actualDocument) => [
+                    ...actualDocument,
                     documents.filter(documen => documen.id === doc)
                 ])
             })
@@ -64,8 +68,7 @@ const Dashboard = ({user}) => {
         updateDoc(idPost, documents)
         
         setUpdate(true)
-
-        console.log(document)
+        messageAtt('Candidatura excluída')
     }
 
     return (
@@ -85,17 +88,18 @@ const Dashboard = ({user}) => {
                             <span>{doc[0].name}</span>
                         </div>
                         <div>
-                            <span>status...</span>
+                            <span>{doc[0].statePost}</span>
                         </div>
                     </section>
                     <div>
-                        <button className='btn_outline'>
+                        <button className='btn_outline' onClick={() => navigate(`/detail_vacancy/${doc[0].id}`)}>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </button>
                         <button onClick={() => handleDeleteApply(doc[0].id)} className='btn_outline'>X</button>
                     </div>
                 </section>
             ))}
+            {messageExist && <span className='message'>{message}</span>}
         </div>
     )
 }

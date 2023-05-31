@@ -79,8 +79,9 @@ const Register = () => {
                     <i className="fa-solid fa-lock"></i>
                 </label>
                 {error && <p>{error}</p>}
-                {loading && <span className='loading'></span>}
-                <input type="submit" value="Registrar" className='btn' />
+                <button type="submit" className='btn'>
+                    {loading ? <span className='loading'></span> : 'Registrar'}
+                </button>
                 <Link to="/login">Já possui cadastro? Faça login!</Link>
                 <Link to="/register/company">É uma empresa? Faça cadastro como uma</Link>
             </form>

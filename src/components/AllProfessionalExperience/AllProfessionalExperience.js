@@ -2,6 +2,7 @@ import styles from './AllProfessionalExperience.module.css'
 
 import { useFetchUser } from '../../hooks/useFetchUser'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
+import { useMessage } from '../../hooks/useMessage'
 
 const AllProfessionalExperience = ({user, changeStateMenu}) => {
 
@@ -9,11 +10,14 @@ const AllProfessionalExperience = ({user, changeStateMenu}) => {
 
   const {updateUser} = useUpdateUser('users')
 
+  const {messageExist, message, messageAtt} = useMessage()
+
   let contador = -1
 
   const handleDeleteField = (e) => {
     userDoc.profissional.splice(e.target.id, 1)
     updateUser(id, userDoc)
+    messageAtt('Experiência excluída')
   }
 
   return (
@@ -39,6 +43,7 @@ const AllProfessionalExperience = ({user, changeStateMenu}) => {
         <span className={styles.noexperience}>Nenhuma experiência declarada...</span>
       )}
       <button className='btn' id='5' onClick={changeStateMenu}>Adicionar experiência</button>
+      {messageExist && <span className='message'>{message}</span>}
     </div>
   )
 }

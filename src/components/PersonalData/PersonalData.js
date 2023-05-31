@@ -57,11 +57,7 @@ const PersonalData = ({user}) => {
 
     return (
         <div className={styles.container}>
-            {messageExist && (
-                <div className='message'>
-                    <span>{message}</span>
-                </div>
-            )}
+            {messageExist && <span className='message'>{message}</span>}
             <form autoComplete='off' onSubmit={handleSubmit} className={styles.form}>
                 <h2>Dados pessoais</h2>
                 <label>
@@ -95,9 +91,10 @@ const PersonalData = ({user}) => {
                     <span>Linkedin:</span>
                     <input type="text" name="linkedin" placeholder='Coloque aqui o link do seu linkedin' value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
                 </label>
-                <input type="submit" value="Salvar" className='btn' />
+                <button type="submit" className='btn'>
+                    {loading ? <span className='loading'></span> : 'Salvar'}
+                </button>
                 {error && <p>{error}</p>}
-                {loading && <span className='loading'></span>}
             </form>
         </div>
     )
