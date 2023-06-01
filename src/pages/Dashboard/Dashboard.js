@@ -39,8 +39,6 @@ const Dashboard = ({user}) => {
 
     }, [userDoc, documents, update])
 
-    
-
     const handleDeleteApply = (idPost) => {
         if(userDoc.apply) {
             const indiceArray = userDoc.apply.indexOf(idPost)
@@ -48,24 +46,27 @@ const Dashboard = ({user}) => {
                 userDoc.apply.splice(indiceArray, 1)
             }
         }
+
         let indiceDocument
-        console.log(idPost)
         documents.map((doc) => {
             const refIndex = doc.id.indexOf(idPost)
             if(refIndex !== -1) {
                 indiceDocument = doc
             }
         })
-
+        let singleDocument = {}
         if(documents[documents.indexOf(indiceDocument)].apply) {
             const indiceArray = documents[documents.indexOf(indiceDocument)].apply.indexOf(id)
             if(indiceArray !== -1) {
                 documents[documents.indexOf(indiceDocument)].apply.splice(indiceArray, 1)
+                singleDocument = documents[documents.indexOf(indiceDocument)]
             }
         }
 
+        console.log(singleDocument)
+
         updateUser(id, userDoc)
-        updateDoc(idPost, documents)
+        updateDoc(idPost, singleDocument)
         
         setUpdate(true)
         messageAtt('Candidatura excluída')

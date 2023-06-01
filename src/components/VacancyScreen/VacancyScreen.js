@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styles from './VacancyScreen.module.css'
 
 import { useApply } from "../../hooks/useApply"
 import { useFetchUser } from "../../hooks/useFetchUser"
-import { useEffect, useState } from "react"
 import { useMessage } from "../../hooks/useMessage"
 
 const VacancyScreen = ({error, documents, user, message}) => {
@@ -13,6 +12,8 @@ const VacancyScreen = ({error, documents, user, message}) => {
     const {messageExist, message: messageSucess, messageAtt} = useMessage()
 
     const {userDoc, id} = useFetchUser('users', user && user.uid)
+
+    const navigate = useNavigate()
 
     const sendApply = (doc) => {
         if(user && userDoc.apply) {
@@ -35,7 +36,7 @@ const VacancyScreen = ({error, documents, user, message}) => {
                     </section>
                 )}
                 {documents && documents.map((doc) => (
-                    <div key={doc.id}>
+                    <div onClick={() => navigate(`/detail_vacancy/${doc.id}`)} key={doc.id}>
                         <h2>{doc.name}</h2>
                         <p>{doc.createBy}</p>
                         <div className={styles.info}>
