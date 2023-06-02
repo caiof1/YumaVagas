@@ -39,6 +39,8 @@ export const useRegisterAuth = () => {
 
             createInfoUser({
                 uid: auth.currentUser.proactiveRefresh.user.uid,
+                email: auth.currentUser.proactiveRefresh.user.email,
+                name: auth.currentUser.proactiveRefresh.user.displayName,
                 idA: data.idA,
                 apply: [],
                 number: '',

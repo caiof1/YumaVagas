@@ -64,9 +64,11 @@ const Header = ({user}) => {
                     <i onClick={handleBarMove} className="fa-solid fa-bars"></i>
                 </div>
                 <ul className={moveBar === 'active' ? styles.active : ''}>
-                    <li>
-                        <NavLink onClick={handleBarMove} to="/">Home</NavLink>
-                    </li>
+                    {user && userDoc.idA !== 1 && (
+                        <li>
+                            <NavLink onClick={handleBarMove} to="/">Home</NavLink>
+                        </li>
+                    )}
                     {user && uid === userDoc.uid && userDoc.idA === 1 && (
                         <li>
                             <NavLink onClick={handleBarMove} to="/create/posts">Criar vaga</NavLink>

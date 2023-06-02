@@ -17,7 +17,6 @@ export const useUpdateUser = (docCollection) => {
             await updateDoc(docRef, data)
         } catch (error) {
             setError('Tivemos um erro ao salvar suas informações')
-            console.log(error)
         }
 
         setLoading(false)

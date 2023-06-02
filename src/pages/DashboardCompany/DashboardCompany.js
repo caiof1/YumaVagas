@@ -78,7 +78,7 @@ const Dashboard = ({user}) => {
                         </div>
                     </section>
                     <div>
-                        <button className='btn_outline' onClick={() => navigate(`/dashboard/company/view`)}>
+                        <button className='btn_outline' onClick={() => navigate(`/dashboard/company/view_candidate/${doc.id}`)}>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </button>
                         <button onClick={() => navigate(`/dashboard/company/edit_vacancy/${doc.id}`)} className='btn_outline' >

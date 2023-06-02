@@ -26,6 +26,7 @@
 
 .container_vacancy p {
     margin: 10px 0;
+    word-wrap: break-word;
 }
 
 .container_vacancy .qtd_vacancy {

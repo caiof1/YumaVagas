@@ -32,6 +32,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import DashboardCompany from './pages/DashboardCompany/DashboardCompany'
 import DetailVacancy from './pages/DetailVacancy/DetailVacancy';
 import EditVacancy from './pages/EditVacancy/EditVacancy';
+import ViewCandidate from './pages/ViewCandidate/ViewCandidate'
 
 
 function App() {
@@ -41,9 +42,6 @@ function App() {
   const {auth} = useRegisterAuth()
 
   const [uid, setUID] = useState('')
-
-    
-  
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -91,11 +89,12 @@ function App() {
               <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/login" />} />
               <Route path="/dashboard/user" element={user && userDoc.idA === 0 ? <Dashboard user={user} /> : <Navigate to="/login" />} />
               <Route path="/dashboard/company" element={user && userDoc.idA === 1 ? <DashboardCompany user={user} /> : <Navigate to="/login" />} />
-              <Route path="/" element={<Home userDoc={userDoc} user={user} />} />
+              <Route path="/" element={user ? (userDoc.idA === 1 ? <Navigate to="/profile" /> : <Home user={user} userDoc={userDoc} />) : <Navigate to="/login" />} />
               <Route path="/create/posts" element={user && userDoc.idA === 1 ?  <Posts /> : <Navigate to="/login" />} />
-              <Route path="/search" element={<Search user={user} userDoc={userDoc} />} />
-              <Route path="/detail_vacancy/:id" element={<DetailVacancy user={user} />} />
-              <Route path="dashboard/company/edit_vacancy/:id" element={<EditVacancy />} />
+              <Route path="/search" element={user && userDoc.idA === 1 ? <Navigate to="/profile" /> : <Search user={user} userDoc={userDoc} />} />
+              <Route path="/detail_vacancy/:id" element={user && <DetailVacancy user={user} />} />
+              <Route path="dashboard/company/edit_vacancy/:id" element={user && userDoc.idA === 1 ? <EditVacancy /> : <Navigate to="/" />} />
+              <Route path="/dashboard/company/view_candidate/:id" element={user && userDoc.idA === 1 ? <ViewCandidate /> : <Navigate to="/" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

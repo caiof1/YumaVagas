@@ -1,0 +1,33 @@
+.container {
+    padding: 10px;
+    text-align: center;
+}
+
+.container > section {
+    width: 100%;
+    width: 100%;
+    max-width: 700px;
+    background: #2dabe6;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.container section section {
+    width: 100%;
+    padding: 0 10px;
+    margin: 25px 0;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+    .container section section {
+        flex-direction: column;
+    }
+}

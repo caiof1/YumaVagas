@@ -50,6 +50,10 @@
     width: 90%;
 }
 
+.container p {
+    word-wrap: break-word;
+}
+
 .container form {
     width: 100%;
     text-align: center;
