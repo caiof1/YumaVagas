@@ -62,10 +62,11 @@ const Posts = () => {
             ...actualAllBenefits,
             arrayBenefit
         ])
+
+        setNameBenefits('')
+        setValueBenefits('')
         
     }
-
-    console.log(allBenefits)
 
     const handleRemoveBenefit = (e) => {
         setAllBenefits((actualAllBenefits) => actualAllBenefits.splice(e.target.value, 1))
@@ -92,7 +93,7 @@ const Posts = () => {
             type,
             model,
             benefits: allBenefits,
-            statePost: 'Candidaturas',
+            statusPost: 'Candidaturas',
             apply: [],
             uid: user.uid,
             createBy: user.displayName

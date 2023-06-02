@@ -4,7 +4,7 @@ import { useFetchUser } from '../../hooks/useFetchUser'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import { useEffect, useState } from 'react'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useMessage } from '../../hooks/useMessage'
 import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
@@ -13,14 +13,14 @@ const Dashboard = ({user}) => {
     const {userDoc, id} = useFetchUser('users', user && user.uid)
 
     const [document, setDocument] = useState([])
+
+    const navigate = useNavigate()
     
     const {documents} = useFetchDocuments('posts')
 
     const {documents: users} = useFetchDocuments('users')
 
     const {updateUser} = useUpdateUser('users')
-
-    const {updateUser: updateDoc} = useUpdateUser('posts')
 
     const deleteDocument = useDeleteDocument('posts')
 
@@ -68,18 +68,21 @@ const Dashboard = ({user}) => {
                 </>
             )}
             {userDoc && documents && document && document.map((doc) => (
-                <section key={doc.id}>
+                <section key={doc.id} className={doc.statusPost === 'Fim' && styles.end_vacancy}>
                     <section>
                         <div>
                             <span>{doc.name}</span>
                         </div>
                         <div>
-                            <span>{doc.statePost}</span>
+                            <span>{doc.statusPost}</span>
                         </div>
                     </section>
                     <div>
-                        <button className='btn_outline'>
+                        <button className='btn_outline' onClick={() => navigate(`/dashboard/company/view`)}>
                             <i className="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <button onClick={() => navigate(`/dashboard/company/edit_vacancy/${doc.id}`)} className='btn_outline' >
+                            <i class="fa-solid fa-file-pen"></i>
                         </button>
                         <button onClick={() => handleDeleteApply(doc.id)} className='btn_outline'>X</button>
                     </div>

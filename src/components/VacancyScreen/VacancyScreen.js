@@ -36,8 +36,11 @@ const VacancyScreen = ({error, documents, user, message}) => {
                     </section>
                 )}
                 {documents && documents.map((doc) => (
-                    <div onClick={() => navigate(`/detail_vacancy/${doc.id}`)} key={doc.id}>
+                    <div key={doc.id}>
                         <h2>{doc.name}</h2>
+                        <button className={styles.view_vacancy} onClick={() => navigate(`/detail_vacancy/${doc.id}`)}>
+                            <i className="fa-solid fa-magnifying-glass"></i>
+                        </button>
                         <p>{doc.createBy}</p>
                         <div className={styles.info}>
                             <span>

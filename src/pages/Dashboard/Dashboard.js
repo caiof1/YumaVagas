@@ -22,6 +22,7 @@ const Dashboard = ({user}) => {
     const [update, setUpdate] = useState(false)
 
     const {messageExist, message, messageAtt} = useMessage()
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -63,8 +64,6 @@ const Dashboard = ({user}) => {
             }
         }
 
-        console.log(singleDocument)
-
         updateUser(id, userDoc)
         updateDoc(idPost, singleDocument)
         
@@ -83,13 +82,13 @@ const Dashboard = ({user}) => {
                 </>
             )}
             {userDoc && documents && document && document.map((doc) => (
-                <section key={doc[0].id}>
+                <section key={doc[0].id} className={doc[0].statusPost === 'Fim' && styles.end_vacancy}>
                     <section>
                         <div>
                             <span>{doc[0].name}</span>
                         </div>
                         <div>
-                            <span>{doc[0].statePost}</span>
+                            <span>{doc[0].statusPost}</span>
                         </div>
                     </section>
                     <div>

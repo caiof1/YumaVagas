@@ -40,7 +40,16 @@
     font-size: 17px;
 }
 
-@media screen and (max-width: 500px) {
+.container_dashboard .end_vacancy {
+    border-color: rgb(30, 230, 30);
+}
+
+.container_dashboard .end_vacancy div span,
+.container_dashboard .end_vacancy button {
+    color: rgb(30, 230, 30);
+}
+
+@media screen and (max-width: 600px) {
     .container_dashboard section section {
         flex-direction: column;
     }

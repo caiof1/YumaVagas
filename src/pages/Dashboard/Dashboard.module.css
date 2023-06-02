@@ -35,6 +35,15 @@
     color: white;
 }
 
+.container_dashboard .end_vacancy {
+    border-color: rgb(30, 230, 30);
+}
+
+.container_dashboard .end_vacancy div span,
+.container_dashboard .end_vacancy button {
+    color: rgb(30, 230, 30);
+}
+
 .container_dashboard section div:last-child button {
     margin: 0 10px;
     font-size: 17px;

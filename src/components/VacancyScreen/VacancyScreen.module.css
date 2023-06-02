@@ -13,6 +13,26 @@
     border-radius: 15px;
     margin: 30px 0;
     padding: 20px;
+    position: relative;
+}
+
+.container > div:hover {
+    background: #b532fa;
+    transition: all 0.4s;
+    color: white;
+    scale: 1.03;
+}
+
+.container > div:hover .view_vacancy {
+    display: block;
+}
+
+.container > div:hover .info strong {
+    color: #2dabe6;
+}
+
+.container > div:hover h2 {
+    color: #2dabe6;
 }
 
 .vaga_create {
@@ -27,15 +47,12 @@
 .container h2 {
     margin-bottom: 15px;
     color: #b532fa;
+    width: 90%;
 }
 
 .container form {
     width: 100%;
     text-align: center;
-}
-
-.container p {
-    color: black;
 }
 
 .info {
@@ -59,4 +76,29 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.view_vacancy {
+    border: 0;
+    background: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.view_vacancy i {
+    font-size: 22px;
+    color: black;
+}
+
+.view_vacancy:hover i {
+    color: #2dabe6;
+}
+
+@media screen and (max-width: 700px) {
+    .container > div .view_vacancy {
+        display: block;
+    }
 }

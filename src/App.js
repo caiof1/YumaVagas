@@ -31,6 +31,7 @@ import Search from './pages/Search/Search';
 import Dashboard from './pages/Dashboard/Dashboard';
 import DashboardCompany from './pages/DashboardCompany/DashboardCompany'
 import DetailVacancy from './pages/DetailVacancy/DetailVacancy';
+import EditVacancy from './pages/EditVacancy/EditVacancy';
 
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
               <Route path="/create/posts" element={user && userDoc.idA === 1 ?  <Posts /> : <Navigate to="/login" />} />
               <Route path="/search" element={<Search user={user} userDoc={userDoc} />} />
               <Route path="/detail_vacancy/:id" element={<DetailVacancy user={user} />} />
+              <Route path="dashboard/company/edit_vacancy/:id" element={<EditVacancy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
